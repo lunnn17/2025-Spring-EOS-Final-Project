@@ -1,0 +1,17 @@
+# Vivado 產生的暫存檔和目錄
+.cache/
+.runs/
+.hw/
+.sim/
+.ip_user_files/
+.webtalk/
+.Xil/
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.tmp
+*.backup
+*.restore
+*.xml
