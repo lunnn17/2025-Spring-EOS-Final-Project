@@ -3,6 +3,7 @@
 .runs/
 .hw/
 .sim/
+.gen/
 .ip_user_files/
 .webtalk/
 .Xil/
@@ -15,3 +16,17 @@
 *.backup
 *.restore
 *.xml
+*.rpt
+*.dcp
+*.xci
+*.wdf
+*.vds
+*.rpx
+*.bda
+*.bxml
+*.bit
+*.hwdef
+*.tcl
+*.ui
+*.xdc
+*~
