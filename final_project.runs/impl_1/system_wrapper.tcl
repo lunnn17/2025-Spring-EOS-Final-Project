@@ -132,6 +132,8 @@ OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
   set_property webtalk.parent_dir D:/EOS_Project/final_project/final_project.cache/wt [current_project]
   set_property parent.project_path D:/EOS_Project/final_project/final_project.xpr [current_project]
+  set_property ip_repo_paths D:/EOS_Project/final_project/GCD_IP [current_project]
+  update_ip_catalog
   set_property ip_output_repo D:/EOS_Project/final_project/final_project.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]

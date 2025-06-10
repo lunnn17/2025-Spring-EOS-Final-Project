@@ -1,0 +1,42 @@
+module gcd_ip_top (
+    input clk,
+    input rst,
+    input [7:0] a,
+    input [7:0] b,
+    output [7:0] cout
+);
+
+    wire [7:0] sub_a, sub_b;
+    wire [7:0] a_out, b_out;
+    wire [1:0] cpr;
+    wire [7:0] a_mux_out, b_mux_out;
+
+    // FSM ????
+    wire load, compute, done;
+
+    // FSM ??
+    gcd_fsm fsm (
+        .clk(clk),
+        .rst(rst),
+        .cpr(cpr),
+        .load(load),
+        .compute(compute),
+        .done(done)
+    );
+
+    // ??????
+    comparator u1 (.clk(clk), .rst(rst), .a(a_out), .b(b_out), .cout(cpr));
+    subtractor  u2 (.clk(clk), .rst(rst), .cmd(cpr), .a(a_out), .b(b_out), .aout(sub_a), .bout(sub_b));
+
+    // multiplexer for register input
+    assign a_mux_out = load ? a : (compute ? sub_a : a_out);
+    assign b_mux_out = load ? b : (compute ? sub_b : b_out);
+
+    // ?????????
+    register u3 (.clk(clk), .rst(rst), .a(a), .b(a_mux_out), .cout(a_out)); // ?? a_mux_out ???
+    register u4 (.clk(clk), .rst(rst), .a(b), .b(b_mux_out), .cout(b_out)); // ?? b_mux_out ???
+
+    // ???????? done ??? a_out?? GCD ???
+    assign cout = done ? a_out : 8'd0;
+
+endmodule

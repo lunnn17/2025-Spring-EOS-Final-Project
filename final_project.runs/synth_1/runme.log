@@ -11,7 +11,7 @@
 
 source system_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/EOS_Project/final_project/GCD_IP'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
 Command: synth_design -top system_wrapper -part xc7z020clg400-1
 Starting synth_design
@@ -20,58 +20,59 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 15952
+INFO: [Synth 8-7075] Helper process launched with PID 13644
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1108.512 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1107.836 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'system_wrapper' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/hdl/system_wrapper.v:12]
-INFO: [Synth 8-6157] synthesizing module 'system' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:582]
-INFO: [Synth 8-6157] synthesizing module 'system_axi_gpio_0_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_axi_gpio_0_0' (1#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'system_processing_system7_0_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_processing_system7_0_0' (2#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_processing_system7_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:752]
-WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:752]
-WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'system_processing_system7_0_0' has 65 connections declared, but only 63 given [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:752]
-INFO: [Synth 8-6157] synthesizing module 'system_ps7_0_axi_periph_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:927]
+INFO: [Synth 8-6157] synthesizing module 'system_wrapper' [D:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/hdl/system_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'system' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:728]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_gpio_0_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_gpio_0_0' (1#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_gcd_ip_0_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_gcd_ip_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_gcd_ip_0_0' (2#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_gcd_ip_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_processing_system7_0_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_processing_system7_0_0' (3#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:939]
+WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:939]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'system_processing_system7_0_0' has 65 connections declared, but only 63 given [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:939]
+INFO: [Synth 8-6157] synthesizing module 'system_ps7_0_axi_periph_0' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1135]
 INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1H7AUOX' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1H7AUOX' (3#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1H7AUOX' (4#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:12]
 INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_4Y7TYO' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:144]
-INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_4Y7TYO' (4#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:144]
-INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_11SE3QO' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:276]
-INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (5#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_11SE3QO' (6#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:276]
-INFO: [Synth 8-6157] synthesizing module 'system_xbar_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_xbar_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_xbar_0' (7#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_xbar_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'system_xbar_0' is unconnected for instance 'xbar' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1431]
-WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'system_xbar_0' is unconnected for instance 'xbar' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1431]
-WARNING: [Synth 8-7023] instance 'xbar' of module 'system_xbar_0' has 40 connections declared, but only 38 given [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1431]
-INFO: [Synth 8-6155] done synthesizing module 'system_ps7_0_axi_periph_0' (8#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:927]
-INFO: [Synth 8-6157] synthesizing module 'system_rst_ps7_0_100M_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_rst_ps7_0_100M_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_rst_ps7_0_100M_0' (9#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_rst_ps7_0_100M_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:897]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:897]
-WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:897]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:897]
-WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'system_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:897]
-INFO: [Synth 8-6157] synthesizing module 'system_axi_gpio_0_1' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_axi_gpio_0_1' (10#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-18304-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system' (11#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:582]
-INFO: [Synth 8-6155] done synthesizing module 'system_wrapper' (12#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/hdl/system_wrapper.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_4Y7TYO' (5#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:144]
+INFO: [Synth 8-6157] synthesizing module 'm02_couplers_imp_FKL2TE' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:276]
+INFO: [Synth 8-6155] done synthesizing module 'm02_couplers_imp_FKL2TE' (6#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:276]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_11SE3QO' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:422]
+INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (7#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_11SE3QO' (8#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:422]
+INFO: [Synth 8-6157] synthesizing module 'system_xbar_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_xbar_0' (9#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_ps7_0_axi_periph_0' (10#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1135]
+INFO: [Synth 8-6157] synthesizing module 'system_rst_ps7_0_100M_0' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_rst_ps7_0_100M_0' (11#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_rst_ps7_0_100M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1105]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1105]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1105]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1105]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'system_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:1105]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_gpio_0_1' [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_gpio_0_1' (12#1) [D:/EOS_Project/final_project/final_project.runs/synth_1/.Xil/Vivado-1572-LAPTOP-K808NGC5/realtime/system_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system' (13#1) [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/synth/system.v:728]
+INFO: [Synth 8-6155] done synthesizing module 'system_wrapper' (14#1) [D:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/hdl/system_wrapper.v:12]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1130.281 ; gain = 21.770
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1132.113 ; gain = 24.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1130.281 ; gain = 21.770
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1132.113 ; gain = 24.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1130.281 ; gain = 21.770
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1132.113 ; gain = 24.277
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1130.281 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1132.113 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -88,24 +89,26 @@ Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/sy
 Finished Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0/system_auto_pc_0_in_context.xdc] for cell 'system_i/ps7_0_axi_periph/s00_couplers/auto_pc'
 Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_in_context.xdc] for cell 'system_i/rst_ps7_0_100M'
 Finished Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_in_context.xdc] for cell 'system_i/rst_ps7_0_100M'
+Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_gcd_ip_0_0/system_gcd_ip_0_0/system_gcd_ip_0_0_in_context.xdc] for cell 'system_i/gcd_ip_0'
+Finished Parsing XDC File [d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_gcd_ip_0_0/system_gcd_ip_0_0/system_gcd_ip_0_0_in_context.xdc] for cell 'system_i/gcd_ip_0'
 Parsing XDC File [D:/EOS_Project/final_project/final_project.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [D:/EOS_Project/final_project/final_project.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1153.812 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1157.273 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1153.812 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1157.273 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1153.812 ; gain = 45.301
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1157.273 ; gain = 49.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1153.812 ; gain = 45.301
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1157.273 ; gain = 49.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -378,11 +381,12 @@ Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph/xbar. (
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/rst_ps7_0_100M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/gcd_ip_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1153.812 ; gain = 45.301
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1157.273 ; gain = 49.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1153.812 ; gain = 45.301
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1157.273 ; gain = 49.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -404,25 +408,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1153.812 ; gain = 45.301
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1157.273 ; gain = 49.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1218.113 ; gain = 109.602
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1221.270 ; gain = 113.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1218.410 ; gain = 109.898
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1221.566 ; gain = 113.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1238.027 ; gain = 129.516
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1240.672 ; gain = 132.836
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -440,37 +444,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -483,9 +487,10 @@ Report BlackBoxes:
 |1     |system_xbar_0                 |         1|
 |2     |system_auto_pc_0              |         1|
 |3     |system_axi_gpio_0_0           |         1|
-|4     |system_processing_system7_0_0 |         1|
-|5     |system_rst_ps7_0_100M_0       |         1|
-|6     |system_axi_gpio_0_1           |         1|
+|4     |system_gcd_ip_0_0             |         1|
+|5     |system_processing_system7_0_0 |         1|
+|6     |system_rst_ps7_0_100M_0       |         1|
+|7     |system_axi_gpio_0_1           |         1|
 +------+------------------------------+----------+
 
 Report Cell Usage: 
@@ -494,29 +499,30 @@ Report Cell Usage:
 +------+----------------------------+------+
 |1     |system_auto_pc              |     1|
 |2     |system_axi_gpio_0           |     2|
-|4     |system_processing_system7_0 |     1|
-|5     |system_rst_ps7_0_100M       |     1|
-|6     |system_xbar                 |     1|
-|7     |IBUF                        |     6|
+|4     |system_gcd_ip_0             |     1|
+|5     |system_processing_system7_0 |     1|
+|6     |system_rst_ps7_0_100M       |     1|
+|7     |system_xbar                 |     1|
+|8     |IBUF                        |     6|
 +------+----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1246.430 ; gain = 138.594
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1242.773 ; gain = 110.730
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1242.773 ; gain = 134.262
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 1246.430 ; gain = 113.434
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1246.430 ; gain = 138.594
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1254.824 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1256.602 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1261.688 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1264.039 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+43 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1261.688 ; gain = 153.176
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1264.039 ; gain = 156.203
 INFO: [Common 17-1381] The checkpoint 'D:/EOS_Project/final_project/final_project.runs/synth_1/system_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file system_wrapper_utilization_synth.rpt -pb system_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jun  9 15:56:30 2025...
+INFO: [Common 17-206] Exiting Vivado at Tue Jun 10 14:07:00 2025...
