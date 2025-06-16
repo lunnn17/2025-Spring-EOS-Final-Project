@@ -1,0 +1,67 @@
+`timescale 1ns/1ps
+
+module gcd_ip_tb;
+
+    reg clk;
+    reg rst;
+    reg [7:0] a;
+    reg [7:0] b;
+    wire [7:0] cout;
+    wire done;
+
+    // ????????
+    gcd_ip_top uut (
+        .clk(clk),
+        .rst(rst),
+        .a(a),
+        .b(b),
+        .cout(cout),
+        .done(done) // << ?? done
+    );
+
+    // ????????10ns
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    initial begin
+        // ?????
+        rst = 1;
+        a = 8'd0;
+        b = 8'd0;
+
+        #40; rst = 0;
+
+        // ?? 48 ? 18
+        a = 8'd48;
+        b = 8'd18;
+        wait(done == 1);
+        $display("GCD of 48 and 18 = %d", cout);
+
+        // ?? 56 ? 98
+        rst = 1; #40; rst = 0;
+        a = 8'd56;
+        b = 8'd98;
+        wait(done == 1);
+        $display("GCD of 56 and 98 = %d", cout);
+
+        // ?? 60 ? 45
+        rst = 1; #40; rst = 0;
+        a = 8'd60;
+        b = 8'd45;
+        wait(done == 1);
+        $display("GCD of 60 and 45 = %d", cout);
+
+        // ?? 18 ? 48
+        rst = 1; #40; rst = 0;
+        a = 8'd18;
+        b = 8'd48;
+        wait(done == 1);
+        $display("GCD of 18 and 48 = %d", cout);
+
+        $stop; // ????
+    end
+
+endmodule
+

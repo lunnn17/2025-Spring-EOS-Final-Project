@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="final_project" location="D:/EOS_Project/final_project/freertos_system/final_project" platform="D:/EOS_Project/final_project/freertos_system/freertos/export/freertos/freertos.xpfm" platformUID="xilinx:pynq-z2::0.0(custom)" systemProject="final_project_system" sysConfig="freertos" runtime="C/C++" cpu="freertos10_xilinx_domain" cpuInstance="ps7_cortexa9_0" os="freertos10_xilinx" mssSignature="8e0d5a77387047cf819cd30e2ff6bdf5">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1051510619">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.334031403" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="freertos_hello_world"/>
+</sdkproject:SdkProject>

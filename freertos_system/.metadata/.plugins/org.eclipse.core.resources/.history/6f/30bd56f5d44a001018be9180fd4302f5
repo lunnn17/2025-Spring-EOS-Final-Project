@@ -1,0 +1,145 @@
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+/* Xilinx includes. */
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xil_io.h"
+#include <stdlib.h>
+
+#include "desip.h"
+#include "gcdip.h"
+#include "aesip.h"
+
+void gcd_hw(void)
+{
+    uint8_t x, y;
+	uint8_t result, done = 0;
+
+	srand((unsigned int)xTaskGetTickCount());
+
+
+    x = rand()%256+1;
+	y = rand()%256+1;
+
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG0_OFFSET, x);
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG1_OFFSET, y);
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG2_OFFSET, 1);
+	do{
+		done = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG3_OFFSET);
+//		xil_printf("done = %d\r\n", done);
+	}while(!done);
+
+	result = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG4_OFFSET);
+	xil_printf("GCD(%d, %d) = %d\r\n",x, y, result);
+}
+
+void des_hw()
+{
+	// 32 bits
+	/* r0: input [1:32]
+	 * r1: input [33:64]
+	 * r2: key [1:32]
+	 * r3: key [33:64]
+	 * r4: mode enc:1 dec:0
+	 * r5: start 1
+	 * r6: done
+	 * r7: output [1:32]
+	 * r8: output [33:64]
+	 * */
+	uint64_t encryption_in = 0x8000000000000000;
+	uint64_t decryption_in = 0x95f8a5e5dd31d900;
+	uint64_t key = 0;
+
+	uint32_t key_hi = (uint32_t) (key >> 32);
+	uint32_t key_lo = (uint32_t) (key & 0xFFFFFFFF);
+
+	uint32_t e_hi = (uint32_t) (encryption_in >> 32);
+	uint32_t e_lo = (uint32_t) (encryption_in & 0xFFFFFFFF);
+	uint32_t d_hi = (uint32_t) (decryption_in >> 32);
+	uint32_t d_lo = (uint32_t) (decryption_in & 0xFFFFFFFF);
+	xil_printf("DES Encryption INPUT = 0x%08x%08x\r\n", e_hi, e_lo);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG0_OFFSET, e_hi);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG1_OFFSET, e_lo);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG2_OFFSET, key_hi);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG3_OFFSET, key_lo);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG4_OFFSET, 0); // encryption
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG5_OFFSET, 1);
+	DESIP_mWriteReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG5_OFFSET, 0);
+	int done = 0;
+	do{
+		done = DESIP_mReadReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG6_OFFSET);
+		xil_printf("done = %d\r\n", done);
+	}while(!done);
+
+	uint32_t out_hi = DESIP_mReadReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG7_OFFSET);
+	uint32_t out_lo = DESIP_mReadReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG8_OFFSET);
+	xil_printf("DES Encryption Output = 0x%08x%08x\r\n", out_hi, out_lo);
+
+}
+
+
+void aes_hw()
+{
+	 uint64_t plaintext_hi = 0x0011223344556677; // [128:64]
+	 uint64_t plaintext_lo = 0x8899aabbccddeeff; // [63:0]
+	 uint64_t key_hi = 0x0001020304050607; // [128:64]
+	 uint64_t key_lo = 0x08090a0b0c0d0e0f; // [63:0]
+
+	 xil_printf("------------------------AES TASK START----------------------\r\n");
+	 xil_printf("PLAINTEXT = 0x%016llx%016llx\r\n", plaintext_hi, plaintext_lo);
+	 xil_printf("KEY       = 0x%016llx%016llx\r\n", key_hi, key_lo);
+	 xil_printf("MODE : ENCRYPTION\r\n", key_hi, key_lo);
+	 // seg4 => [128:96], seg3 => [95:64], seg2 => [63:32], seg1 => [31:0]
+	 uint32_t plain_seg4 = (uint32_t)(plaintext_hi >> 32); // [128:96]
+	 uint32_t plain_seg3 = (uint32_t)(plaintext_hi & 0xFFFFFFFF); // [95:64]
+	 uint32_t key_seg4 = (uint32_t)(key_hi >> 32); // [128:96]
+	 uint32_t key_seg3 = (uint32_t)(key_hi & 0xFFFFFFFF); // [95:64]
+
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG4_OFFSET, 0);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG3_OFFSET, key_seg4);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG2_OFFSET, key_seg3);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG1_OFFSET, plain_seg4);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG0_OFFSET, plain_seg3);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG5_OFFSET, 1);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG5_OFFSET, 0);
+
+
+	 uint32_t plain_seg2 = (uint32_t)(plaintext_lo >> 32);
+	 uint32_t plain_seg1 = (uint32_t)(plaintext_lo & 0xFFFFFFFF);
+	 uint32_t key_seg2 = (uint32_t)(key_lo >> 32);
+	 uint32_t key_seg1 = (uint32_t)(key_lo & 0xFFFFFFFF);
+
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG3_OFFSET, key_seg2);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG2_OFFSET, key_seg1);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG1_OFFSET, plain_seg2);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG0_OFFSET, plain_seg1);
+
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG5_OFFSET, 1);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG6_OFFSET, 1);
+	 AESIP_mWriteReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG6_OFFSET, 0);
+	 int done = 0;
+	 do {
+		 done = AESIP_mReadReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG7_OFFSET);
+	 } while (!done);
+
+	 uint32_t r1 = AESIP_mReadReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG8_OFFSET);
+	 uint32_t r2 = AESIP_mReadReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG9_OFFSET);
+	 uint32_t r3 = AESIP_mReadReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG10_OFFSET);
+	 uint32_t r4 = AESIP_mReadReg(XPAR_AESIP_0_S00_AXI_BASEADDR, AESIP_S00_AXI_SLV_REG11_OFFSET);
+
+	 xil_printf("AES OUTPUT = 0x%08x%08x%08x%08x\r\n", r4, r3, r2, r1);
+	 xil_printf("------------------------AES TASK END------------------------\r\n");
+
+
+}
+
+int main(void)
+{
+//	gcd_hw();
+	des_hw();
+//	aes_hw();
+	return 0;
+}
+

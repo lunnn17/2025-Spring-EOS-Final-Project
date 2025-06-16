@@ -1,0 +1,57 @@
+C:/GCD/test_bench.v {1 {vlog -work work -stats=none C:/GCD/test_bench.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module gcd_ip_tb
+
+Top level modules:
+	gcd_ip_tb
+
+} {} {}} C:/GCD/comparator.v {1 {vlog -work work -stats=none C:/GCD/comparator.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module comparator
+
+Top level modules:
+	comparator
+
+} {} {}} C:/GCD/gcdip_top.v {1 {vlog -work work -stats=none C:/GCD/gcdip_top.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module gcd_ip_top
+
+Top level modules:
+	gcd_ip_top
+
+} {} {}} C:/GCD/subractor.v {1 {vlog -work work -stats=none C:/GCD/subractor.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module subtractor
+
+Top level modules:
+	subtractor
+
+} {} {}} C:/GCD/register.v {1 {vlog -work work -stats=none C:/GCD/register.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module register
+
+Top level modules:
+	register
+
+} {} {}} C:/GCD/Done.v {1 {vlog -work work -stats=none C:/GCD/Done.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Done
+
+Top level modules:
+	Done
+
+} {} {}} C:/GCD/output_mux.v {1 {vlog -work work -stats=none C:/GCD/output_mux.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module output_mux
+
+Top level modules:
+	output_mux
+
+} {} {}} C:/GCD/FSM.v {1 {vlog -work work -stats=none C:/GCD/FSM.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module gcd_fsm
+
+Top level modules:
+	gcd_fsm
+
+} {} {}}

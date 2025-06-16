@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-//Date        : Tue Jun 10 14:05:40 2025
+//Date        : Tue Jun 17 01:59:42 2025
 //Host        : LAPTOP-K808NGC5 running 64-bit major release  (build 9200)
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -31,8 +31,9 @@ module system_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    button_tri_i,
-    switch_tri_i);
+    btn,
+    led,
+    switch);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -54,8 +55,9 @@ module system_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  input [3:0]button_tri_i;
-  input [1:0]switch_tri_i;
+  input btn;
+  output [3:0]led;
+  input [1:0]switch;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -78,8 +80,9 @@ module system_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire [3:0]button_tri_i;
-  wire [1:0]switch_tri_i;
+  wire btn;
+  wire [3:0]led;
+  wire [1:0]switch;
 
   system system_i
        (.DDR_addr(DDR_addr),
@@ -103,6 +106,7 @@ module system_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
-        .button_tri_i(button_tri_i),
-        .switch_tri_i(switch_tri_i));
+        .btn(btn),
+        .led(led),
+        .switch(switch));
 endmodule

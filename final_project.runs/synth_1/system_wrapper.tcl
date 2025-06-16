@@ -83,7 +83,11 @@ set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
-set_property ip_repo_paths d:/EOS_Project/final_project/GCD_IP [current_project]
+set_property ip_repo_paths {
+  d:/EOS_Project/final_project/AES_IP2
+  d:/EOS_Project/final_project/DES_IP
+  d:/EOS_Project/final_project/GCD_IP
+} [current_project]
 update_ip_catalog
 set_property ip_output_repo d:/EOS_Project/final_project/final_project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
@@ -92,16 +96,10 @@ OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib D:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/hdl/system_wrapper.v
 add_files D:/EOS_Project/final_project/final_project.srcs/sources_1/bd/system/system.bd
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_board.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1.xdc]
-set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_board.xdc]
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0.xdc]
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/EOS_Project/final_project/final_project.gen/sources_1/bd/system/system_ooc.xdc]
 
@@ -114,6 +112,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc D:/EOS_Project/final_project/lab4.xdc
+set_property used_in_implementation false [get_files D:/EOS_Project/final_project/lab4.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1

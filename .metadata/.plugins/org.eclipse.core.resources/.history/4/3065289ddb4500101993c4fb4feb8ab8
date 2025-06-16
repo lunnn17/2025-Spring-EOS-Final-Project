@@ -1,0 +1,20 @@
+#include "xparameters.h"
+#include "xil_io.h"
+#include "gcdip.h"
+
+#define GCD_IP_BASEAFFR 0x43C0_0000
+
+int main (void)
+{
+	int x = 12;
+	int y = 8;
+	int result;
+	xil_printf("%x", XPAR_GCD_IP_0_S00_AXI_BASEADDR);
+
+	GCD_IP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCD_IP_S00_AXI_SLV_REG0_OFFSET, x);
+	GCD_IP_mWriteReg(XPAR_GCD_IP_0_S00_AXI_BASEADDR, GCD_IP_S00_AXI_SLV_REG1_OFFSET, y);
+
+
+	result = GCD_IP_mReadReg(XPAR_GCD_IP_0_S00_AXI_BASEADDR, GCD_IP_S00_AXI_SLV_REG2_OFFSET);
+	xil_printf("GCD(%d , %d) = %d\n\r", x, y, result);
+}

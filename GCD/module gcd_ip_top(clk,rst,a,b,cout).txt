@@ -1,0 +1,21 @@
+module gcd_ip_top(clk,rst,a,b,cout);
+
+
+input clk,rst;
+input [7:0] a,b;
+output [7:0] cout;
+
+wire [7:0] sub_a,sub_b;
+wire [7:0] a_out,b_out;
+wire [1:0] cpr; //compare_output
+
+
+register m1(clk,~rst,a,sub_a,a_out);
+register m2(clk,~rst,b,sub_b,b_out);
+comparator m3(clk,~rst,a_out,b_out,cpr);
+subtractor  m4(clk,~rst,a_out,b_out,a_sub,b_sub);
+
+assign cout = (cpr == 2'b10) ? a_out : 8'd0;
+
+
+endmodule

@@ -1,0 +1,196 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/DES
+vcomparator
+Z0 !s110 1749548788
+!i10b 1
+!s100 F:42PcGBY@ihHe1eIk9@V3
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ih[o29lRHKT^^Q:Po<9>zA3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/GCD
+w1749493203
+8C:/GCD/comparator.v
+FC:/GCD/comparator.v
+!i122 76
+L0 1 15
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1749548788.000000
+!s107 C:/GCD/comparator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/comparator.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vDone
+Z8 !s110 1749548789
+!i10b 1
+!s100 b9Sk<aXN5MZRNFETWo7L42
+R1
+IdSkc0@HV5iIfNh6fjEbSM3
+R2
+R3
+w1749548502
+8C:/GCD/Done.v
+FC:/GCD/Done.v
+!i122 83
+L0 1 19
+R4
+r1
+!s85 0
+31
+Z9 !s108 1749548789.000000
+!s107 C:/GCD/Done.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/Done.v|
+!i113 1
+R6
+R7
+n@done
+vgcd_fsm
+R0
+!i10b 1
+!s100 V[4`2UgkBIJ_InoWLYRZ`1
+R1
+IUgSiHhRb[`0T5Z`VdbB_60
+R2
+R3
+w1749493999
+8C:/GCD/FSM.v
+FC:/GCD/FSM.v
+!i122 77
+L0 1 50
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/GCD/FSM.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/FSM.v|
+!i113 1
+R6
+R7
+vgcd_ip_tb
+R8
+!i10b 1
+!s100 >ZC^_R61Jdd6mkigKd`A13
+R1
+I>LOC2l0agMZ?KB[Ki_63k3
+R2
+R3
+w1749548222
+8C:/GCD/test_bench.v
+FC:/GCD/test_bench.v
+!i122 82
+L0 3 60
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/GCD/test_bench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/test_bench.v|
+!i113 1
+R6
+R7
+vgcd_ip_top
+R8
+!i10b 1
+!s100 ak_G3cZ6dfT[IP9S[3G8g3
+R1
+IIiNzNXjo_i=TIMGf>J6B00
+R2
+R3
+w1749548787
+8C:/GCD/gcdip_top.v
+FC:/GCD/gcdip_top.v
+!i122 78
+L0 1 44
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/GCD/gcdip_top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/gcdip_top.v|
+!i113 1
+R6
+R7
+voutput_mux
+R8
+!i10b 1
+!s100 A[HiCkgj[IRW7bzJ:?73k1
+R1
+IQNM2Bm73HPQhHL2nBX3H00
+R2
+R3
+w1749476855
+8C:/GCD/output_mux.v
+FC:/GCD/output_mux.v
+!i122 79
+L0 1 24
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/GCD/output_mux.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/output_mux.v|
+!i113 1
+R6
+R7
+vregister
+R8
+!i10b 1
+!s100 AN]OjVPOI8J?O4nR]^JQg1
+R1
+IN3HE:0G7cN]GZL6jXUV0d2
+R2
+R3
+w1749493905
+8C:/GCD/register.v
+FC:/GCD/register.v
+!i122 80
+L0 1 23
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/GCD/register.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/register.v|
+!i113 1
+R6
+R7
+vsubtractor
+R8
+!i10b 1
+!s100 4>NFekk3zVi636ThQQE_l2
+R1
+IT9@LC`:TN@mz55GdRBfc=0
+R2
+R3
+w1749490099
+8C:/GCD/subractor.v
+FC:/GCD/subractor.v
+!i122 81
+L0 1 37
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/GCD/subractor.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/GCD/subractor.v|
+!i113 1
+R6
+R7

@@ -3,10 +3,10 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="D:/EOS_Project/final_project/GCD_IP/managed_ip_project/managed_ip_project.xpr">
+<Project Version="7" Minor="54" Path="C:/GCD_IP/managed_ip_project/managed_ip_project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="a8f7abc6cbe142f2971646f381d35397"/>
+    <Option Name="Id" Val="f9b7d300999247d0a073c8d8085d0a5e"/>
     <Option Name="Part" Val="xc7z020clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -36,7 +36,9 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Managed_IP"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/gcd_ip_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../../DES_IP/desip_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../../AES_IP2/aesip_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/gcdip_1.0"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>

@@ -160,23 +160,20 @@ proc create_root_design { parentCell } {
 
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
 
-  set button [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 button ]
-
-  set switch [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 switch ]
-
 
   # Create ports
+  set btn [ create_bd_port -dir I btn ]
+  set led [ create_bd_port -dir O -from 3 -to 0 led ]
+  set switch [ create_bd_port -dir I -from 1 -to 0 switch ]
 
-  # Create instance: button, and set properties
-  set button [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 button ]
-  set_property -dict [ list \
-   CONFIG.C_ALL_INPUTS {1} \
-   CONFIG.C_GPIO_WIDTH {4} \
-   CONFIG.GPIO_BOARD_INTERFACE {btns_4bits} \
- ] $button
+  # Create instance: aesip_0, and set properties
+  set aesip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:aesip:1.0 aesip_0 ]
 
-  # Create instance: gcd_ip_0, and set properties
-  set gcd_ip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:gcd_ip:1.0 gcd_ip_0 ]
+  # Create instance: desip_0, and set properties
+  set desip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:desip:1.0 desip_0 ]
+
+  # Create instance: gcdip_0, and set properties
+  set gcdip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:gcdip:1.0 gcdip_0 ]
 
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
@@ -394,7 +391,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_INCLUDE_TRACE_BUFFER {0} \
    CONFIG.PCW_IOPLL_CTRL_FBDIV {20} \
    CONFIG.PCW_IO_IO_PLL_FREQMHZ {1000.000} \
-   CONFIG.PCW_IRQ_F2P_INTR {0} \
+   CONFIG.PCW_IRQ_F2P_INTR {1} \
    CONFIG.PCW_IRQ_F2P_MODE {DIRECT} \
    CONFIG.PCW_MIO_0_DIRECTION {inout} \
    CONFIG.PCW_MIO_0_IOTYPE {LVCMOS 3.3V} \
@@ -734,7 +731,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_PCAP_PERIPHERAL_CLKSRC {IO PLL} \
    CONFIG.PCW_PCAP_PERIPHERAL_DIVISOR0 {5} \
    CONFIG.PCW_PCAP_PERIPHERAL_FREQMHZ {200} \
-   CONFIG.PCW_PERIPHERAL_BOARD_PRESET {None} \
+   CONFIG.PCW_PERIPHERAL_BOARD_PRESET {part0} \
    CONFIG.PCW_PLL_BYPASSMODE_ENABLE {0} \
    CONFIG.PCW_PRESET_BANK0_VOLTAGE {LVCMOS 3.3V} \
    CONFIG.PCW_PRESET_BANK1_VOLTAGE {LVCMOS 1.8V} \
@@ -957,7 +954,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_USE_DMA3 {0} \
    CONFIG.PCW_USE_EXPANDED_IOP {0} \
    CONFIG.PCW_USE_EXPANDED_PS_SLCR_REGISTERS {0} \
-   CONFIG.PCW_USE_FABRIC_INTERRUPT {0} \
+   CONFIG.PCW_USE_FABRIC_INTERRUPT {1} \
    CONFIG.PCW_USE_HIGH_OCM {0} \
    CONFIG.PCW_USE_M_AXI_GP0 {1} \
    CONFIG.PCW_USE_M_AXI_GP1 {0} \
@@ -987,33 +984,27 @@ proc create_root_design { parentCell } {
   # Create instance: rst_ps7_0_100M, and set properties
   set rst_ps7_0_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M ]
 
-  # Create instance: switch, and set properties
-  set switch [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 switch ]
-  set_property -dict [ list \
-   CONFIG.C_ALL_INPUTS {1} \
-   CONFIG.C_GPIO_WIDTH {2} \
-   CONFIG.GPIO_BOARD_INTERFACE {sws_2bits} \
- ] $switch
-
   # Create interface connections
-  connect_bd_intf_net -intf_net button_GPIO [get_bd_intf_ports button] [get_bd_intf_pins button/GPIO]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins button/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins ps7_0_axi_periph/M01_AXI] [get_bd_intf_pins switch/S_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins gcd_ip_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
-  connect_bd_intf_net -intf_net switch_GPIO [get_bd_intf_ports switch] [get_bd_intf_pins switch/GPIO]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins aesip_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins desip_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins gcdip_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
 
   # Create port connections
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins button/s_axi_aclk] [get_bd_pins gcd_ip_0/s00_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins switch/s_axi_aclk]
+  connect_bd_net -net aesip_0_intr [get_bd_pins aesip_0/intr] [get_bd_pins processing_system7_0/IRQ_F2P]
+  connect_bd_net -net aesip_0_led [get_bd_ports led] [get_bd_pins aesip_0/led]
+  connect_bd_net -net btn_0_1 [get_bd_ports btn] [get_bd_pins aesip_0/btn]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins aesip_0/s00_axi_aclk] [get_bd_pins desip_0/s00_axi_aclk] [get_bd_pins gcdip_0/s00_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins button/s_axi_aresetn] [get_bd_pins gcd_ip_0/s00_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins switch/s_axi_aresetn]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins aesip_0/s00_axi_aresetn] [get_bd_pins desip_0/s00_axi_aresetn] [get_bd_pins gcdip_0/s00_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
+  connect_bd_net -net switch_0_1 [get_bd_ports switch] [get_bd_pins aesip_0/switch]
 
   # Create address segments
-  assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs button/S_AXI/Reg] -force
-  assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs gcd_ip_0/S00_AXI/S00_AXI_reg] -force
-  assign_bd_address -offset 0x41210000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs switch/S_AXI/Reg] -force
+  assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs aesip_0/S00_AXI/S00_AXI_reg] -force
+  assign_bd_address -offset 0x43C10000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs desip_0/S00_AXI/S00_AXI_reg] -force
+  assign_bd_address -offset 0x43C20000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs gcdip_0/S00_AXI/S00_AXI_reg] -force
 
 
   # Restore current instance

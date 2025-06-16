@@ -1,0 +1,44 @@
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+/* Xilinx includes. */
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xil_io.h"
+#include <stdlib.h>
+
+#include "desip.h"
+#include "gcdip.h"
+#include "aesip.h"
+
+void gcd(void)
+{
+    uint8_t x, y;
+	uint8_t result, done = 0;
+
+	srand((unsigned int)xTaskGetTickCount());
+
+
+    x = rand()%256+1;
+	y = rand()%256+1;
+
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG0_OFFSET, x);
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG1_OFFSET, y);
+	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG2_OFFSET, 1);
+	do{
+		done = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG3_OFFSET);
+//		xil_printf("done = %d\r\n", done);
+	}while(!done);
+
+	result = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG4_OFFSET);
+	xil_printf("GCD(%d, %d) = %d\r\n",x, y, result);
+}
+
+int main(void)
+{
+	gcd();
+	return 0;
+}
+

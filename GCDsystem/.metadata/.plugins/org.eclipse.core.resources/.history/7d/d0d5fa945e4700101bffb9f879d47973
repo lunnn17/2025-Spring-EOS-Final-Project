@@ -1,0 +1,43 @@
+#include "xparameters.h"
+#include "xil_io.h"
+#include "gcd_ip.h"
+#include "xil_printf.h"
+
+// #define GCD_IP_BASEADDR 0x43C00000   // 若你要自定 base address
+
+// 簡單 busy-wait delay (僅裸機可用)
+void simple_delay(volatile unsigned int count) {
+    while(count--) {
+        __asm__ volatile ("nop");
+    }
+}
+
+int main (void)
+{
+    int x = 12;
+    int y = 8;
+    int done, result;
+    int r0, r1;
+
+    xil_printf("GCD IP base address: %08x\n\r", XPAR_GCD_IP_0_S00_AXI_BASEADDR);
+
+    GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG0_OFFSET, x);
+    GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG1_OFFSET, y);
+
+    r0 = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG0_OFFSET);
+    r1 = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG1_OFFSET);
+    xil_printf("r0 = %d, r1 = %d\n\r", r0, r1);
+    // 啟動運算（視你的 HDL 需要，可能要寫入 SLV_REG3_OFFSET 為 1）
+
+
+    // Polling done bit（假設 done bit 在 SLV_REG3_OFFSET 的 bit 1）
+    while (GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG2_OFFSET)) {
+        done = GCDIP_mReadReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG2_OFFSET);
+        xil_printf("done = %d\r\n", done);
+    }
+
+    result = GCDIP_mReadReg(XPAR_GCD_IP_0_S00_AXI_BASEADDR, GCD_IP_S00_AXI_SLV_REG3_OFFSET);
+    xil_printf("GCD(%d , %d) = %d\n\r", x, y, result);
+
+    return 0;
+}

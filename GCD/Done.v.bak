@@ -1,0 +1,19 @@
+module Done(clk,rst,a,cout);
+
+input clk,rst,a;
+output cout;
+
+always@(posedge clk) begin
+   if(rst) begin
+      cout <= 1'b0;
+   end
+   else begin
+      if(a==1'b1) begin
+         cout <= 1'b1;
+      end
+      else begin
+         cout <= 1'b0;
+      end
+   end
+end
+endmodule

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Jun 10 14:08:03 2025
+| Date         : Tue Jun 17 02:05:10 2025
 | Host         : LAPTOP-K808NGC5 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
 | Design       : system_wrapper
@@ -23,43 +23,53 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 6
-+-----------+----------+-------------------------------+------------+
-| Rule      | Severity | Description                   | Violations |
-+-----------+----------+-------------------------------+------------+
-| TIMING-18 | Warning  | Missing input or output delay | 6          |
-+-----------+----------+-------------------------------+------------+
+             Violations found: 8
++-----------+----------+-------------------+------------+
+| Rule      | Severity | Description       | Violations |
++-----------+----------+-------------------+------------+
+| TIMING-20 | Warning  | Non-clocked latch | 8          |
++-----------+----------+-------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-TIMING-18#1 Warning
-Missing input or output delay  
-An input delay is missing on button_tri_i[0] relative to clock(s) clk_fpga_0
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[0] cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#2 Warning
-Missing input or output delay  
-An input delay is missing on button_tri_i[1] relative to clock(s) clk_fpga_0
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[1] cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#3 Warning
-Missing input or output delay  
-An input delay is missing on button_tri_i[2] relative to clock(s) clk_fpga_0
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[2] cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/FSM_sequential_nState_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#4 Warning
-Missing input or output delay  
-An input delay is missing on button_tri_i[3] relative to clock(s) clk_fpga_0
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/enable_reg cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/enable_reg/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#5 Warning
-Missing input or output delay  
-An input delay is missing on switch_tri_i[0] relative to clock(s) clk_fpga_0
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/xld_reg cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/xld_reg/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#6 Warning
-Missing input or output delay  
-An input delay is missing on switch_tri_i[1] relative to clock(s) clk_fpga_0
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/xsel_reg cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/xsel_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/yld_reg cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/yld_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/ysel_reg cannot be properly analyzed as its control pin system_i/gcdip_0/inst/gcdip_v1_0_S00_AXI_inst/u1/TOFSM/ysel_reg/G is not reached by a timing clock
 Related violations: <none>
 
 
