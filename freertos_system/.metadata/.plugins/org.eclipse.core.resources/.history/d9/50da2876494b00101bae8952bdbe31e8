@@ -23,8 +23,8 @@ void gcd_hw(void)
 	srand((unsigned int)xTaskGetTickCount());
 
 
-    x = rand()%255+1;
-	y = rand()%255+1;
+    x = rand()%256+1;
+	y = rand()%256+1;
 	xil_printf("------------------------GCD TASK START----------------------\r\n");
 	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG0_OFFSET, x);
 	GCDIP_mWriteReg(XPAR_GCDIP_0_S00_AXI_BASEADDR, GCDIP_S00_AXI_SLV_REG1_OFFSET, y);
@@ -42,6 +42,7 @@ void gcd_hw(void)
 
 void des_hw()
 {
+	// 32 bits
 	/* r0: input [1:32]
 	 * r1: input [33:64]
 	 * r2: key [1:32]
@@ -80,7 +81,8 @@ void des_hw()
 	uint32_t out_hi = DESIP_mReadReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG7_OFFSET);
 	uint32_t out_lo = DESIP_mReadReg(XPAR_DESIP_0_S00_AXI_BASEADDR, DESIP_S00_AXI_SLV_REG8_OFFSET);
 	xil_printf("DES Encryption Output = 0x%08x%08x\r\n", out_hi, out_lo);
-	xil_printf("------------------------DES TASK END------------------------\r\n\r\n");
+	xil_printf("------------------------AES TASK END------------------------\r\n\r\n");
+
 }
 
 
